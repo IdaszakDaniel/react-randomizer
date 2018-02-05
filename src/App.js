@@ -20,6 +20,17 @@ let fakeData  = {
   ]
 }
 
+class Search extends Component{
+  render(){
+    return (
+      <div>
+        <input type="text" onKeyUp={event => 
+          this.props.onTextChange(event.target.value)} />
+      </div>
+    );
+  }
+}
+
 class List extends Component{
   render(){
     let org = this.props.org;
@@ -38,7 +49,10 @@ class List extends Component{
 class App extends Component {
   constructor() {
     super();
-    this.state = {serverData: {}}
+    this.state = {
+      serverData: {},
+      searchString: ''
+    }
   }
 
   componentDidMount() {
@@ -48,18 +62,26 @@ class App extends Component {
   }
 
   render() {
+    let renderList = this.state.serverData.organisations 
+          && this.state.serverData.organisations.filter(el =>
+            el.name.toLowerCase().includes(this.state.searchString.toLowerCase()));
+
     return (
       <div className="App">
         {this.state.serverData.organisations ?
           <div>
             <h1>Random organisation:</h1>
-            {this.state.serverData.organisations.map(org =>
-              <List org={org}/>
+            <Search onTextChange={text => {
+                this.setState({searchString: text})
+            }}/>
+            {renderList.map(org =>
+              <List org={org} />
             )}
           </div>
         : ""}
       </div>
     );
+    
   }
 }
 

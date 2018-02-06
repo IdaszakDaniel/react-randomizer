@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { log } from 'util';
 
 let fakeData  = {
   organisations : [
@@ -56,9 +57,20 @@ class App extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({serverData: fakeData});
-    }, 100);
+    fetch('https://api-v3.mojepanstwo.pl/dane/krs_podmioty.json').then(res => res.json())
+    .then(data => {
+      return data.Dataobject.map(element => {
+        let FetchedOrg = {
+          name : element.data["krs_podmioty.nazwa"],
+          number: element.data["krs_podmioty.krs"],
+          www: element.data["krs_podmioty.www"],
+          mail: element.data["krs_podmioty.email"],
+          adress: element.data["krs_podmioty.adres"],
+          url: element.url
+        }
+        return FetchedOrg;
+      });
+    }).then(el => ({organisations: el})).then(el => this.setState({serverData: el}));
   }
 
   render() {

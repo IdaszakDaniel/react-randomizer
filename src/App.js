@@ -21,6 +21,8 @@ let fakeData  = {
   ]
 }
 
+
+
 class Search extends Component{
   render(){
     return (
@@ -35,8 +37,19 @@ class Search extends Component{
 class List extends Component{
   render(){
     let org = this.props.org;
+    let listStyle = {
+      width: '30%',
+      display: 'inline-block',
+      verticalAlign: 'top',
+      margin: '10px',
+      border: '1px solid gray',
+      borderRadius: '20px',
+      textAlign: 'center',
+      fontSize: '15px',
+      height: '350px'
+    };
     return(
-      <div>
+      <div style={listStyle}>
         <h3>{org.name}</h3>
         <p>Number: {org.number}</p>
         <p>Website: {org.www}</p>
@@ -82,7 +95,7 @@ class App extends Component {
       <div className="App">
         {this.state.serverData.organisations ?
           <div>
-            <h1>Random organisation:</h1>
+            <h3>Random organisation:</h3>
             <Search onTextChange={text => {
                 this.setState({searchString: text})
             }}/>

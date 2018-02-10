@@ -1,64 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { log } from 'util';
-
-let fakeData  = {
-  organisations : [
-    {
-      name: "Lorem Ipsum",
-      number: 123456,
-      www: "www.abc.com",
-      mail: "abc@abc.pl",
-      adress: "Warszawska 32, 03-938 Warszawa"
-    },
-    {
-      name: "ABC DEF",
-      number: 789987,
-      www: "www.zxc.com",
-      mail: "zxc@zxc.pl",
-      adress: "Warszawska 32, 03-938 Warszawa"
-    }  
-  ]
-}
-
-
-
-class Search extends Component{
-  render(){
-    return (
-      <div>
-        <input type="text" onKeyUp={event => 
-          this.props.onTextChange(event.target.value)} />
-      </div>
-    );
-  }
-}
-
-class List extends Component{
-  render(){
-    let org = this.props.org;
-    let listStyle = {
-      width: '30%',
-      display: 'inline-block',
-      verticalAlign: 'top',
-      margin: '10px',
-      border: '1px solid gray',
-      borderRadius: '20px',
-      textAlign: 'center',
-      fontSize: '15px',
-      height: '350px'
-    };
-    return(
-      <div style={listStyle}>
-        <h3>{org.name}</h3>
-        <p>Number: {org.number}</p>
-        <p>Website: {org.www}</p>
-        <p>Mail: {org.mail}</p>
-        <p>Adress: {org.adress}</p>
-      </div>
-    );
-  }
-}
+import List from './ListComponent.js';
+import Search from './SearchComponent.js';
 
 class App extends Component {
   constructor() {

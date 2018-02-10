@@ -1,15 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import App from './App';
-import List from './App';
+import List from './ListComponent';
+import Search from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+it('renders App component', () => {
+ shallow(<App />);
 });
 
-it('renders list component', () => {
- shallow(<List />);
+xit('includes Search component', () => {
+  const app = mount(<App />);
+  expect(app.containsMatchingElement(<Search />)).toEqual(true);
 });
+
+xit('includes List component', () => {
+  const app = mount(<App />);
+  expect(app.containsMatchingElement(<List />)).toEqual(true);
+});
+

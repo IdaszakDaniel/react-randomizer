@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class List extends Component{
     render(){
@@ -16,7 +17,7 @@ class List extends Component{
       };
       return(
         <div style={listStyle}>
-          <h3>{org.name}</h3>
+          <Link to={`/single/${org.id}`}><h3>{org.name}</h3></Link>
           <p>Number: {org.number}</p>
           <p>Website: {org.www}</p>
           <p>Mail: {org.mail}</p>

@@ -4,7 +4,7 @@ class Single extends Component{
     render(){
       return(
         <div>
-          <p>SINGLE COMPONENT</p>
+          <p>SINGLE COMPONENT {this.props.match.params.orgId}</p>
         </div>
       );
     }

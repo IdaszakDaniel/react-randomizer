@@ -25,7 +25,7 @@ class App extends Component {
           www: element.data["krs_podmioty.www"],
           mail: element.data["krs_podmioty.email"],
           adress: element.data["krs_podmioty.adres"],
-          url: element.url
+          id: element.id
         }
         return FetchedOrg;
       });
@@ -46,7 +46,7 @@ class App extends Component {
                 this.setState({searchString: text})
             }}/>
             <Route exact path="/" render={props => <Main org={renderList} />}/>
-            <Route path="/single" component={Single} />
+            <Route path="/single/:orgId" component={Single} />
           </div>
         : ""}
       </div>

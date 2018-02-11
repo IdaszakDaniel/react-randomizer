@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import List from './ListComponent.js';
+import Main from './MainComponent.js';
+import Single from './SingleComponent.js';
 import Search from './SearchComponent.js';
+import { Route } from 'react-router';
+
 
 class App extends Component {
   constructor() {
@@ -42,9 +45,8 @@ class App extends Component {
             <Search onTextChange={text => {
                 this.setState({searchString: text})
             }}/>
-            {renderList.map(org =>
-              <List org={org} />
-            )}
+            <Route exact path="/" render={props => <Main org={renderList} />}/>
+            <Route path="/single" component={Single} />
           </div>
         : ""}
       </div>

@@ -10,12 +10,3 @@ it('renders passed data', () => {
     const search = shallow(<Search />);
     expect(search.containsMatchingElement(<input />)).toEqual(true);
 });
-
-xit('filters data', () => {
-    const search = shallow(<Search />);
-  
-    search.find('input').simulate('change',{
-        target: { value: 'abc' }
-    })
-  
-  })

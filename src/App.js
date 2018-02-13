@@ -3,7 +3,8 @@ import './App.css';
 import Main from './MainComponent.js';
 import Single from './SingleComponent.js';
 import Search from './SearchComponent.js';
-import { Route } from 'react-router';
+import NotFound from './NotFoundComponent.js';
+import { Route, Switch } from 'react-router';
 
 
 class App extends Component {
@@ -39,16 +40,17 @@ class App extends Component {
 
     return (
       <div className="App">
-        {this.state.serverData.organisations ?
           <div>
             <h3>Random organisation:</h3>
             <Search onTextChange={text => {
                 this.setState({searchString: text})
             }}/>
-            <Route exact path="/" render={props => <Main org={renderList} />}/>
-            <Route path="/single/:orgId" component={Single} />
+            <Switch>
+              <Route exact path="/" render={props => <Main org={renderList} />}/>
+              <Route path="/single/:orgId" component={Single} />
+              <Route component={NotFound} />
+            </Switch>
           </div>
-        : ""}
       </div>
     );
     

@@ -5,15 +5,16 @@ configure({ adapter: new Adapter() });
 
 const fetchPromise = Promise.resolve({
     json: () => Promise.resolve({
-        Dataobject: [
+        "Dataobject": [
             {
-                data : {
-                    "krs_podmioty.nazwa": 'nazwa',
-                    "krs_podmioty.krs": '1234',
-                    "krs_podmioty.www": 'www.x.pl',
-                    "krs_podmioty.email": 'asd@asd.pl',
-                    "krs_podmioty.adres": 'asdasd 5/6 Warszawa'
-                }
+              "id": "714072",
+              "data": {
+                "krs_podmioty.nazwa": 'nazwa',
+                "krs_podmioty.krs": '1234',
+                "krs_podmioty.www": 'www.x.pl',
+                "krs_podmioty.email": 'asd@asd.pl',
+                "krs_podmioty.adres": 'asdasd 5/6 Warszawa'
+              }
             }
         ]
        

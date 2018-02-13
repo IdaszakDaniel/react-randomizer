@@ -6,7 +6,7 @@ class Main extends Component{
         let renderList = this.props.org;
       return(
         <div>
-            {renderList.map(org =>
+            {renderList && renderList.map(org =>
                 <List org={org} />
             )}
         </div>

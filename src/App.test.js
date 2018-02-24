@@ -2,18 +2,12 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import App from './App';
 import Main from './MainComponent';
-import Search from './SearchComponent';
 import Single from './SingleComponent';
 import NotFound from './NotFoundComponent';
 import { MemoryRouter } from 'react-router'
 
 it('renders App component', () => {
  shallow(<App />);
-});
-
-it('includes Search component', () => {
-  const app = shallow(<App />);
-  expect(app.containsMatchingElement(<Search />)).toEqual(true);
 });
 
 it('404 path', () => {
@@ -33,5 +27,4 @@ it('includes Main component', () => {
   );
   expect(app.containsMatchingElement(<Main />)).toEqual(true);
 });
-
 

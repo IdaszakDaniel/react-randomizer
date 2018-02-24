@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Main from './MainComponent.js';
 import Single from './SingleComponent.js';
-import Search from './SearchComponent.js';
 import NotFound from './NotFoundComponent.js';
 import { Route, Switch } from 'react-router';
 
@@ -42,11 +41,12 @@ class App extends Component {
       <div className="App">
           <div>
             <h3>Random organisation:</h3>
-            <Search onTextChange={text => {
-                this.setState({searchString: text})
-            }}/>
             <Switch>
-              <Route exact path="/" render={props => <Main org={renderList} />}/>
+              <Route exact path="/" render={props => 
+                <Main org={renderList} 
+                      getSearchString={text => this.setState({searchString: text})
+                }/>
+              }/>
               <Route path="/single/:orgId" component={Single} />
               <Route component={NotFound} />
             </Switch>
